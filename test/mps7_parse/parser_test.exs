@@ -17,7 +17,29 @@ defmodule Mps7Parse.ParserTest do
     assert 71 = Parser.parse(@good_file).expected
   end
 
-  test "parsing a good file" do
+  describe "parsing a good file" do
+    test "it finds 18 autopays" do
+      autopay_count =
+        Parser.parse(@good_file).autopays
+        |> Enum.count()
 
+      assert 18 = autopay_count
+    end
+
+    test "it finds 36 debits" do
+      debit_count =
+        Parser.parse(@good_file).debits
+        |> Enum.count()
+
+      assert 36 = debit_count
+    end
+
+    test "it finds 18 credits" do
+      credit_count =
+        Parser.parse(@good_file).credits
+        |> Enum.count()
+
+      assert 18 = credit_count
+    end
   end
 end

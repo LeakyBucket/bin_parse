@@ -4,17 +4,18 @@ defmodule Mps7Parse.Mixfile do
   def project do
     [app: :mps7_parse,
      version: "0.0.1",
-     elixir: "~> 1.2",
+     elixir: "~> 1.7",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps()]
   end
 
   # Configuration for the OTP application
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [mod: {Mps7Parse, []},
+     applications: [:logger]]
   end
 
   # Dependencies can be Hex packages:

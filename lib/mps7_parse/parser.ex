@@ -15,6 +15,10 @@ defmodule Mps7Parse.Parser do
     GenServer.start_link(__MODULE__, %__MODULE__{}, name: __MODULE__)
   end
 
+  def init(args) do
+    {:ok, args}
+  end
+
   def parse(file) do
     {:ok, data_file} = File.open(file)
 
